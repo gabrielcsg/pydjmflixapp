@@ -2,6 +2,7 @@ import streamlit as st
 
 from actors.page import show_actors
 from genres.page import show_genres
+from home.page import show_home
 from login.page import show_login
 from login.service import logout
 from movies.page import show_movies
@@ -27,7 +28,7 @@ def main():
         )
 
         if menu_option == 'Início':
-            st.write('Bem-vindo ao Flix APP')
+            show_home()
         if menu_option == 'Gêneros':
             show_genres()
         if menu_option == 'Atores/Atrizes':

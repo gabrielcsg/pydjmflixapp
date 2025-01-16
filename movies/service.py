@@ -18,3 +18,6 @@ class MovieService:
             resume=resume,
         )
         return self.__movie_repository.create_movie(movie)
+
+    def get_movie_stats(self):
+        return self.__movie_repository.get_movie_stats()
