@@ -3,6 +3,7 @@ import streamlit as st
 from actors.page import show_actors
 from genres.page import show_genres
 from login.page import show_login
+from login.service import logout
 from movies.page import show_movies
 from reviews.page import show_reviews
 
@@ -15,7 +16,14 @@ def main():
 
         menu_option = st.sidebar.selectbox(
             'Selecione uma opção',
-            ['Início', 'Gêneros', 'Atores/Atrizes', 'Filmes', 'Avaliações']
+            [
+                'Início',
+                'Gêneros',
+                'Atores/Atrizes',
+                'Filmes',
+                'Avaliações',
+                'Sair'
+            ]
         )
 
         if menu_option == 'Início':
@@ -28,6 +36,8 @@ def main():
             show_movies()
         if menu_option == 'Avaliações':
             show_reviews()
+        if menu_option == 'Sair':
+            logout()
 
 
 if __name__ == '__main__':
