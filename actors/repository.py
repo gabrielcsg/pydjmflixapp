@@ -1,20 +1,19 @@
 import requests
 import streamlit as st
-
 from login.service import logout
 
 
-class GenreRepository:
+class ActorRepository:
 
     def __init__(self):
         self.__base_url = 'https://gabrielcsg.pythonanywhere.com/api/v1'
-        self.__genres_url = f'{self.__base_url}/genres/'
+        self.__actors_url = f'{self.__base_url}/actors/'
         self.__headers = {
             'Authorization': f'Bearer {st.session_state.token}'
         }
 
-    def get_genres(self):
-        response = requests.get(self.__genres_url, headers=self.__headers)
+    def get_actors(self):
+        response = requests.get(self.__actors_url, headers=self.__headers)
         if response.status_code == 200:
             return response.json()
         if response.status_code == 401:
@@ -24,11 +23,11 @@ class GenreRepository:
             f'Erro ao obter dados da API. Status code: {response.status_code}'
         )
 
-    def create_genre(self, genre: dict):
+    def create_actor(self, actor: dict):
         response = requests.post(
-            self.__genres_url,
+            self.__actors_url,
             headers=self.__headers,
-            data=genre,
+            data=actor,
         )
         if response.status_code == 201:
             return response.json()
@@ -36,6 +35,6 @@ class GenreRepository:
             logout()
             return None
         raise Exception(
-            f'Erro ao cadastrar gênero na API. '
+            f'Erro ao cadastrar ator na API. '
             f'Status code: {response.status_code}'
         )
