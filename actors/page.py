@@ -42,6 +42,7 @@ def show_actors():
             nationality=nationality
         )
         if new_actor:
+            st.success(f'Ator/atriz: {name}, cadastrado com sucesso!')
             st.rerun()
         else:
             st.error('Falha ao cadastrar o ator/atriz.')
